@@ -12,5 +12,9 @@ $light: #f8f8f8;
 // Update Bulma's global variables
 $family-sans-serif: "Nunito", sans-serif;
 $primary: $green;
-
 $link: $turquoise;
+
+// Update some of Bulma's component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
