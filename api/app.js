@@ -13,8 +13,10 @@ const{ List, Task} = require('./db/models/index');
  * GET /lists
  * Purpose: Get all Lists
  */
-app.get('/lists',(req,res) => {
+app.get('/lists',async (req,res) => {
     // We want to return an array of all the lists in the database
+    const lists = await List.find({})
+    res.send(lists);
 })
 
 
