@@ -40,11 +40,9 @@ app.post('/lists',async (req,res) => {
         title
     });
     
-    newList.save().then((listDoc) => {
-       // The full list document is returned (incl. id)
-    res.send(listDoc); 
-    })
-    
+    let listDoc = await newList.save();
+    // The full list document is returned (incl. id)
+    res.send(listDoc);
 });
 
 
@@ -52,9 +50,15 @@ app.post('/lists',async (req,res) => {
  * PATH /lists/:id
  * Purpose: Update a specified list
  */
-app.patch('/lists/:id',(req,res) => {
+app.patch('/lists/:id', (req,res) => {
     // We want to update the specified list (list document with id in the URL) with the new values specified in the JSON body of the request
-})
+    List.findOneAndUpdate({_id: req.params.id},{
+                $set: req.body
+            }).then(() => {
+                res.sendStatus(200);
+            })
+    
+});
 
 
 /**
